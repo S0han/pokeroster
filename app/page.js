@@ -1,13 +1,15 @@
-import Image from "next/image";
+import React from 'react';
+import Slot from "./components/slot.component";
+
 
 export default function App() {
   return (
     <main>
       <title>Pokeroster</title>
-      <body>
+      <div>
         <h1>Pokeroster</h1>
-
-      </body>
+        <Slot />
+      </div>
     </main>
   );
 }
