@@ -1,12 +1,15 @@
 'use client';
 import { useState, useEffect } from 'react'; 
 import Preview from './preview.component';
+import Roster from './roster.component';
 
 const Search = () => {
     //name that is input into the search bar
     const [inputValue, setInputValue] = useState('');
     //retrieve pokemon data based on enetered name when preview button is clicked
     const [pokeData, setPokeData] = useState('Select Pokemon');
+    //maintain roster state ----> an array of Slot elements with stored preiview data
+    const [rosterData, setRosterData] = useState([]);
 
     useEffect(() => {
         console.log(inputValue);
@@ -38,6 +41,11 @@ const Search = () => {
         }
     };
 
+    //logic for adding slot components with valid preview data to roster
+    const addToRosterHandler = () => {
+        return 
+    }
+
     //stops the form from refreshing when enter is pressed
     const submitHandler = (e) => {
         e.preventDefault();
@@ -50,10 +58,11 @@ const Search = () => {
                 <label> Enter Pokemon name:</label>
                 <input type="text" id="name_input" value={inputValue} onChange={searchInputHandler} />
                 <button type="button" onClick={previewInputHandler} >PREVIEW POKEMON</button>
-                <button type="button" onClick={null} >ADD TO ROSTER</button>
+                <button type="button" onClick={addToRosterHandler} >ADD TO ROSTER</button>
                 <input type="submit" value="SUBMIT" />
             </form>
             <Preview id="preview-pokemon" searchBarData={pokeData}/>
+            <Roster />
         </div>
     );
 }

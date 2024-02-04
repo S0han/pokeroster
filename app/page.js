@@ -1,5 +1,4 @@
 import React from 'react';
-import Slot from './components/slot.component';
 import Search from './components/search.component';
 
 
@@ -10,7 +9,6 @@ export default function App() {
       <div>
         <h1>Pokeroster</h1>
         <Search />
-        <Slot />
       </div>
     </main>
   );
