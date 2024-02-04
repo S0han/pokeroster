@@ -47,8 +47,9 @@ const Search = () => {
             <form onSubmit = {submitHandler}>
                 <label> Enter Pokemon name:</label>
                 <input type="text" id="name_input" value={inputValue} onChange={searchInputHandler} />
-                <button type="button" onClick={previewInputHandler} >Preview</button>
-                <input type="submit" value="Submit" />
+                <button type="button" onClick={previewInputHandler} >PREVIEW POKEMON</button>
+                <button type="button" onClick={null} >ADD TO ROSTER</button>
+                <input type="submit" value="SUBMIT" />
             </form>
             <Preview id="preview-pokemon" searchBarData={pokeData}/>
         </div>
