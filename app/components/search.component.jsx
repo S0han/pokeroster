@@ -17,8 +17,9 @@ const Search = () => {
         setInputValue(event.target.value);
     };
 
-    //API call to URl to pull in desired data on pokemon (sprite, name)
+    //API call to URL to pull in desired data on pokemon (sprite, name)
     const previewInputHandler = async () => {
+        console.log('Preview Button Pressed')
         const previewValue = `https://pokeapi.co/api/v2/pokemon/${inputValue}/`
         try {
             const response = await fetch(previewValue);
@@ -40,6 +41,7 @@ const Search = () => {
     //stops the form from refreshing when enter is pressed
     const submitHandler = (e) => {
         e.preventDefault();
+        console.log('Submit Button Pressed');
     }
 
     return (
