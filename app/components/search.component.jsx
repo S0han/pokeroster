@@ -4,16 +4,19 @@ import Preview from './preview.component';
 import Roster from './roster.component';
 
 const Search = () => {
+    
     //name that is input into the search bar
     const [inputValue, setInputValue] = useState('');
     //retrieve pokemon data based on enetered name when preview button is clicked
     const [pokeData, setPokeData] = useState('Select Pokemon');
     //maintain roster state ----> an array of Slot elements with stored preiview data
     const [rosterData, setRosterData] = useState([]);
+    //valid preview status as a condition to add to roster
+    const [validPreview, setValidPreview] = useState(false);
 
     useEffect(() => {
         console.log(inputValue);
-    }, [inputValue])
+    }, [inputValue]);
 
     useEffect(() => {
         console.log('Roster Updated:', rosterData);
@@ -40,19 +43,21 @@ const Search = () => {
                 sprites: data.sprites.front_default
             };
             setPokeData(pokeFormat);
+            setValidPreview(true);
         } catch(e) {
-            console.error(e.message)
+            console.error(e.message);
+            setValidPreview(false);
         }
     };
 
     //logic for adding slot components with valid preview data to roster
     const addToRosterHandler = () => {
         console.log('Add To Roster Button Pressed');
-        if (pokeData && rosterData.length < 6) {
+        if (validPreview && rosterData.length < 6) {
             setRosterData([...rosterData, pokeData]);
             setPokeData(null);
             setInputValue('');
-            console.log(rosterData)
+            console.log(rosterData);
         }
     }
 
@@ -60,13 +65,18 @@ const Search = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         console.log('Submit Button Pressed');
+        if (rosterData.length === 6) {
+            
+        } else {
+            alert('You can only submit once your roster contains 6 pokemon!')
+        }
     }
 
     return (
         <div>
             <form onSubmit = {submitHandler}>
                 <label> Enter Pokemon Name:</label>
-                <input type="text" id="name_input" value={inputValue} onChange={searchInputHandler} />
+                <input form="none" type="text" id="name_input" value={inputValue} onChange={searchInputHandler} />
                 <button type="button" onClick={previewInputHandler} >PREVIEW POKEMON</button>
                 <button type="button" onClick={addToRosterHandler} >ADD TO ROSTER</button>
                 <input type="submit" value="SUBMIT" />
