@@ -1,6 +1,14 @@
-const Roster = () => {
+import Slot from './slot.component';
+
+const Roster = ({rosterData}) => {
     return (
-        null
+        <div className="roster-container">
+            {
+                rosterData.map((pokemon, index) =>  (
+                    <Slot key={index} pokemon={pokemon} />
+                ))
+            }
+        </div>
     );
 }
 

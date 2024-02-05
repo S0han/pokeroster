@@ -15,6 +15,10 @@ const Search = () => {
         console.log(inputValue);
     }, [inputValue])
 
+    useEffect(() => {
+        console.log('Roster Updated:', rosterData);
+    }, [rosterData]);
+
     //detects a change in the search bar
     const searchInputHandler = (event) => {
         setInputValue(event.target.value);
@@ -43,7 +47,13 @@ const Search = () => {
 
     //logic for adding slot components with valid preview data to roster
     const addToRosterHandler = () => {
-        return 
+        console.log('Add To Roster Button Pressed');
+        if (pokeData && rosterData.length < 6) {
+            setRosterData([...rosterData, pokeData]);
+            setPokeData(null);
+            setInputValue('');
+            console.log(rosterData)
+        }
     }
 
     //stops the form from refreshing when enter is pressed
@@ -55,14 +65,14 @@ const Search = () => {
     return (
         <div>
             <form onSubmit = {submitHandler}>
-                <label> Enter Pokemon name:</label>
+                <label> Enter Pokemon Name:</label>
                 <input type="text" id="name_input" value={inputValue} onChange={searchInputHandler} />
                 <button type="button" onClick={previewInputHandler} >PREVIEW POKEMON</button>
                 <button type="button" onClick={addToRosterHandler} >ADD TO ROSTER</button>
                 <input type="submit" value="SUBMIT" />
             </form>
             <Preview id="preview-pokemon" searchBarData={pokeData}/>
-            <Roster />
+            <Roster rosterData={rosterData} />
         </div>
     );
 }

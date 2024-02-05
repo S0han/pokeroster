@@ -1,8 +1,9 @@
-const Slot = () => {
+const Slot = ({pokemon}) => {
     return  (
+        
         <div className="slot-container">
-            <img src={null} alt={null} />
-            <p>{null}</p>
+            <img src={pokemon ? pokemon.sprites : null} alt={pokemon ? pokemon.name : null} />
+            <p>{pokemon ? pokemon.name : null}</p>
        </div>
     );
 }
