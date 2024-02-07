@@ -58,15 +58,43 @@ const Search = () => {
             setPokeData(null);
             setInputValue('');
             console.log(rosterData);
+            setValidPreview(false);
         }
     }
+
+    const submitRoster = async () => {
+        const finalRoster = {
+            pokemon1: rosterData[0],
+            pokemon2: rosterData[1],
+            pokemon3: rosterData[2],
+            pokemon4: rosterData[3],
+            pokemon5: rosterData[4],
+            pokemon6: rosterData[5]
+        };
+
+        try {
+            const request = await fetch('/submit-roster', {
+                method: "POST",
+                headers: {
+                    'Content-type': "application/json"
+                },
+                body: JSON.stringify(finalRoster)
+            });
+            const response = await request.json()
+            console.log(response);
+        }
+        catch (e) {
+            console.error(e)
+        }
+
+    };
 
     //stops the form from refreshing when enter is pressed
     const submitHandler = (e) => {
         e.preventDefault();
         console.log('Submit Button Pressed');
         if (rosterData.length === 6) {
-            
+            submitRoster();
         } else {
             alert('You can only submit once your roster contains 6 pokemon!')
         }
@@ -79,7 +107,7 @@ const Search = () => {
                 <input form="none" type="text" id="name_input" value={inputValue} onChange={searchInputHandler} />
                 <button type="button" onClick={previewInputHandler} >PREVIEW POKEMON</button>
                 <button type="button" onClick={addToRosterHandler} >ADD TO ROSTER</button>
-                <input type="submit" value="SUBMIT" onSubmit={submitHandler} />
+                <input type="submit" value="SUBMIT" />
             </form>
             <Preview id="preview-pokemon" searchBarData={pokeData}/>
             <Roster rosterData={rosterData} />
