@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'; 
 import Preview from './preview.component';
 import Roster from './roster.component';
+import { POST } from '../api/route';
 
 const Search = () => {
     
@@ -62,39 +63,41 @@ const Search = () => {
         }
     }
 
-    const submitRoster = async () => {
-        const finalRoster = {
-            pokemon1: rosterData[0],
-            pokemon2: rosterData[1],
-            pokemon3: rosterData[2],
-            pokemon4: rosterData[3],
-            pokemon5: rosterData[4],
-            pokemon6: rosterData[5]
-        };
+    //****Commented out the section below because I will be using a route handler in the api folder****
+    // const submitRoster = async () => {
+    //     const finalRoster = {
+    //         pokemon1: rosterData[0],
+    //         pokemon2: rosterData[1],
+    //         pokemon3: rosterData[2],
+    //         pokemon4: rosterData[3],
+    //         pokemon5: rosterData[4],
+    //         pokemon6: rosterData[5]
+    //     };
 
-        try {
-            const request = await fetch('/submit-roster', {
-                method: "POST",
-                headers: {
-                    'Content-type': "application/json"
-                },
-                body: JSON.stringify(finalRoster)
-            });
-            const response = await request.json()
-            console.log(response);
-        }
-        catch (e) {
-            console.error(e)
-        }
+    //     try {
+    //         const request = await fetch('/submit-roster', {
+    //             method: "POST",
+    //             headers: {
+    //                 'Content-type': "application/json"
+    //             },
+    //             body: JSON.stringify(finalRoster)
+    //         });
+    //         const response = await request.json()
+    //         console.log(response);
+    //     }
+    //     catch (e) {
+    //         console.error(e)
+    //     }
 
-    };
+    // };
 
     //stops the form from refreshing when enter is pressed
+ 
     const submitHandler = (e) => {
         e.preventDefault();
         console.log('Submit Button Pressed');
         if (rosterData.length === 6) {
-            submitRoster();
+            POST()
         } else {
             alert('You can only submit once your roster contains 6 pokemon!')
         }
