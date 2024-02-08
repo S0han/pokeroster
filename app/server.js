@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3001;
 
 let corsOptions = { 
-    origin : ['http://localhost:3001'], 
+    origin : ['http://localhost:3000'], 
  }
 
 //CORS middleware
