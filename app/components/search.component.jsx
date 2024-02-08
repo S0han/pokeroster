@@ -5,7 +5,6 @@ import Roster from './roster.component';
 import { POST } from '../api/route';
 
 const Search = () => {
-    
     //name that is input into the search bar
     const [inputValue, setInputValue] = useState('');
     //retrieve pokemon data based on enetered name when preview button is clicked
@@ -97,7 +96,15 @@ const Search = () => {
         e.preventDefault();
         console.log('Submit Button Pressed');
         if (rosterData.length === 6) {
-            POST()
+            const finalRoster = {
+                pokemon1: rosterData[0],
+                pokemon2: rosterData[1],
+                pokemon3: rosterData[2],
+                pokemon4: rosterData[3],
+                pokemon5: rosterData[4],
+                pokemon6: rosterData[5]
+            };
+            POST(finalRoster)
         } else {
             alert('You can only submit once your roster contains 6 pokemon!')
         }
