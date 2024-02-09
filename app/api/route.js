@@ -1,7 +1,7 @@
 // export const dynamic = 'force-dynamic';
 export async function POST({finalRoster}) {
     try {
-        const res = await fetch('http://localhost:3000/submit-roster', {
+        const res = await fetch('http://localhost:3001/submit-roster ', {
             method: "POST",
             headers: {
                 'Content-type': "application/json"

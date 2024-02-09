@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3001;
 
 let corsOptions = { 
-    origin : ['http://localhost:3000'], 
+    origin : ['http://localhost:3000'],
  }
 
 //CORS middleware
@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //populate table on database with roster data sent
-app.post('http://localhost:3000/submit-roster', (req, res) => {
+app.post('http://localhost:3001/submit-roster ', (req, res) => {
     console.log(req.body);
     res.json({ message: "Roster submitted successfully" });
 });
