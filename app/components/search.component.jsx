@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react'; 
 import Preview from './preview.component';
 import Roster from './roster.component';
-import { POST } from '../api/route';
 
 const Search = () => {
     //name that is input into the search bar
@@ -92,7 +91,7 @@ const Search = () => {
 
     //stops the form from refreshing when enter is pressed
  
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
         console.log('Submit Button Pressed');
         if (rosterData.length === 6) {
@@ -104,7 +103,17 @@ const Search = () => {
                 pokemon5: rosterData[4],
                 pokemon6: rosterData[5]
             };
-            POST(finalRoster)
+            try {
+                const res = await fetch('/api/submit-roster', {
+                    method: "POST",
+                    headers: {
+                        'Content-type': "application/json"
+                    },
+                    data: finalRoster
+                });
+            } catch (e) {
+                console.error(e)
+            }
         } else {
             alert('You can only submit once your roster contains 6 pokemon!')
         }
