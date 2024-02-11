@@ -3,9 +3,20 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model PokemonRoster {
+  id          Int         @id @default(autoincrement())
+  pokemon1    String?
+  pokemon2    String?
+  pokemon3    String?
+  pokemon4    String?
+  pokemon5    String?
+  pokemon6    String?
 }
