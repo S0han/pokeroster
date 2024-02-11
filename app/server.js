@@ -16,12 +16,4 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//populate table on database with roster data sent
-app.post('/api/submit-roster ', (req, res) => {
-    console.log(req.body);
-    res.json({ message: "Roster submitted successfully" });
-});
-
-
 app.listen(PORT, () => console.log(`App is listening on port ${PORT}.`));
-

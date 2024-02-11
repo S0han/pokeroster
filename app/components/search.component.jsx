@@ -109,8 +109,10 @@ const Search = () => {
                     headers: {
                         'Content-type': "application/json"
                     },
-                    data: finalRoster
+                    body: JSON.stringify(finalRoster)
                 });
+                const data = await res.json()
+                console.log(data);
             } catch (e) {
                 console.error(e)
             }
