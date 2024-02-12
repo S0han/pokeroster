@@ -103,15 +103,17 @@ const Search = () => {
                 pokemon5: rosterData[4].name,
                 pokemon6: rosterData[5].name
             };
+            const settings = {
+                method: "POST",
+                headers: {
+                    'Content-type': "application/json"
+                },
+                body: JSON.stringify(finalRoster)
+            }
             try {
-                const req = await fetch('/api/submit-roster', {
-                    method: "POST",
-                    headers: {
-                        'Content-type': "application/json"
-                    },
-                    body: JSON.stringify(finalRoster)
-                });
-                console.log(req.body);
+                const res = await fetch('/api/submit-roster', settings);
+                const data = await res.json();
+                return data;
             } catch (e) {
                 console.error(e);
             }
