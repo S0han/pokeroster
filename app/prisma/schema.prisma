@@ -11,7 +11,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model PokemonRoster {
+model rosters {
   id          Int         @id @default(autoincrement())
   pokemon1    String?
   pokemon2    String?

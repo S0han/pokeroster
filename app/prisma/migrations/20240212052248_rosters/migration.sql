@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "PokemonRoster" (
+CREATE TABLE "rosters" (
     "id" SERIAL NOT NULL,
     "pokemon1" TEXT,
     "pokemon2" TEXT,
@@ -8,5 +8,5 @@ CREATE TABLE "PokemonRoster" (
     "pokemon5" TEXT,
     "pokemon6" TEXT,
 
-    CONSTRAINT "PokemonRoster_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "rosters_pkey" PRIMARY KEY ("id")
 );
