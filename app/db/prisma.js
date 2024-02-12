@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export async function addRoster(rosterData) {
-    return await prisma.pokemonRoster.create({
+    return await prisma.rosters.create({
         data: {
             pokemon1: rosterData[0],
             pokemon2: rosterData[1],
