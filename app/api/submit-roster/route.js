@@ -1,22 +1,16 @@
-// export const dynamic = 'force-dynamic';
-// export async function POST({finalRoster}) {
-//     try {
-//         const res = await fetch('http://localhost:3001/submit-roster ', {
-//             method: "POST",
-//             headers: {
-//                 'Content-type': "application/json"
-//             },
-//             body: JSON.stringify(finalRoster)
-//         });
-//         const data = await res.json()        
-//         return Response.json(data);
-//     }
-//     catch (e) {
-//         console.error(e)
-//     }   
-// }
+import db from '../../db/prsima';
 
 export async function POST(req, res) {
-    console.log(req.body);
-    return Response.json({ message: 'Roster submitted successfully' });
+    try {
+        const { pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6 } = req.body;
+        const result = await db.addRoster([pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6]);
+        
+        console.log(result);
+        
+        return res.json({ message: 'Roster Submitted Successfully' });
+
+    } catch (e) {
+        console.error(error);
+        return res.status(500).json({ message: 'Internal Server Error'})
+    }
 }
