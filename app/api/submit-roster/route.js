@@ -11,6 +11,6 @@ export async function POST(req, res) {
 
     } catch (e) {
         console.error(e);
-        return res.status(500).json({ message: 'Internal Server Error'})
+        return res.status(500).json({ message: 'Internal Server Error'});
     }
 }

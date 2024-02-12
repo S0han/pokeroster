@@ -91,17 +91,17 @@ const Search = () => {
 
     //stops the form from refreshing when enter is pressed
  
-    const submitHandler = async (e) => {
-        e.preventDefault();
+    const submitHandler = async (event) => {
+        event.preventDefault();
         console.log('Submit Button Pressed');
         if (rosterData.length === 6) {
             const finalRoster = {
-                pokemon1: rosterData[0],
-                pokemon2: rosterData[1],
-                pokemon3: rosterData[2],
-                pokemon4: rosterData[3],
-                pokemon5: rosterData[4],
-                pokemon6: rosterData[5]
+                pokemon1: rosterData[0].name,
+                pokemon2: rosterData[1].name,
+                pokemon3: rosterData[2].name,
+                pokemon4: rosterData[3].name,
+                pokemon5: rosterData[4].name,
+                pokemon6: rosterData[5].name
             };
             try {
                 const req = await fetch('/api/submit-roster', {
@@ -111,10 +111,9 @@ const Search = () => {
                     },
                     body: JSON.stringify(finalRoster)
                 });
-                const data = await req.json()
-                console.log(data);
+                console.log(req.body);
             } catch (e) {
-                console.error(e)
+                console.error(e);
             }
         } else {
             alert('You can only submit once your roster contains 6 pokemon!')
