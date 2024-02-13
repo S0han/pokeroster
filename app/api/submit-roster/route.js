@@ -1,9 +1,9 @@
 import { addRoster } from '../../db/prisma';
-import { NextResponse } from 'next/server'
+import { NextResponse } from 'next/server';
 
 export async function POST(req, res) {
     try {
-        const { pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6 } = req.body;
+        const { pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6 } = await req.json();
         const result = await addRoster([pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6]);
         console.log(result);
         

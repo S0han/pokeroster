@@ -104,9 +104,9 @@ const Search = () => {
                 pokemon6: rosterData[5].name
             };
             const settings = {
-                method: "POST",
+                method: 'POST',
                 headers: {
-                    'Content-type': "application/json"
+                    'Content-type': 'application/json'
                 },
                 body: JSON.stringify(finalRoster)
             }
