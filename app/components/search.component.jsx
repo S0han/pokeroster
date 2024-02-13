@@ -112,8 +112,7 @@ const Search = () => {
             }
             try {
                 const res = await fetch('/api/submit-roster', settings);
-                const data = await res.json();
-                return data;
+                console.log(res);
             } catch (e) {
                 console.error(e);
             }
