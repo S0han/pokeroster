@@ -116,6 +116,7 @@ const Search = () => {
             } catch (e) {
                 console.error(e);
             }
+            setRosterData([]);
         } else {
             alert('You can only submit once your roster contains 6 pokemon!')
         }
