@@ -118,7 +118,7 @@ const Search = () => {
             }
             setRosterData([]);
         } else {
-            alert('You can only submit once your roster contains 6 pokemon!')
+            alert('You can only submit once your roster contains 6 pokemon!');
         }
     }
 

@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+//add this roster data using the format below in DB
 export async function addRoster(rosterData) {
     try {
         const rosterEntry = await prisma.rosters.create({
@@ -21,6 +22,7 @@ export async function addRoster(rosterData) {
     }
 }
 
+//Export the top 3 names generated through the query from DB to the top-3 API folder
 export async function getTop3() {
     const top3Pokemon = await prisma.$queryRaw(`
         SELECT pokemon_name, COUNT(*) AS occurrences
