@@ -6,8 +6,8 @@ export default function Page() {
     try {
       //get the data from the top-3 folder in API
       const res = await fetch('../../api/top-3');
-      const data = res.json()
-      console.log(data)
+      const data = res.json();
+      console.log(data);
     } catch(e) {
       console.error(e.message);
     } 
