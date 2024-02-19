@@ -1,4 +1,9 @@
+'use client'
+import { useState, useEffect } from 'react';
+
 const Top3PokemonSlots = () => {
+
+    const [top3Pokemon, setTop3Pokemon] = useState([]);
     
     //get the top 3 pokemon names from the database
     const top3PokemonHandler = async () => {
@@ -6,7 +11,8 @@ const Top3PokemonSlots = () => {
     try {
       //get the data from the top-3 folder in api/top-3
       const res = await fetch('/api/top-3');
-      const data = res.json();
+      const data = await res.json();
+      setTop3Pokemon(data);
       console.log(data);
     } catch(e) {
       console.error(e.message);
@@ -16,6 +22,7 @@ const Top3PokemonSlots = () => {
     
     return (
         <div>{top3PokemonHandler()}</div>
+
     );
 }
 
