@@ -4,7 +4,9 @@ import { NextResponse } from 'next/server';
 export async function GET(req, res) {
     try {
         const top3 = await getTop3();
-        return res.json(top3);
+        const data = res.json(top3);
+        console.log(data);
+
     } catch (e) {
         return NextResponse.json(`Webhook error: ${e.message}`, {
             status: 500,
