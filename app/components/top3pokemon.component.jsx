@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
+import Top3Roster from './top3pokemon.component';
 
 const Top3PokemonSlots = () => {
 
@@ -17,12 +18,15 @@ const Top3PokemonSlots = () => {
     } catch(e) {
       console.error(e.message);
     } 
+
+    top3PokemonHandler();
    
   }
     
     return (
-        <div>{top3PokemonHandler()}</div>
-
+        <div>   
+            <Top3Roster />
+        </div>
     );
 }
 
