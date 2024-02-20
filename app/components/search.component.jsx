@@ -32,7 +32,6 @@ const Search = () => {
         const previewValue = `https://pokeapi.co/api/v2/pokemon/${inputValue}/`
         try {
             const response = await fetch(previewValue);
-            
             if (!response.ok) {
                 throw new Error(`Failed to fetch data: ${response.statusText}`);
             }

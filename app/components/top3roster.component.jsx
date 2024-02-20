@@ -1,10 +1,10 @@
 import Slot from './slot.component';
 
-const Top3Roster = ({data}) => {
+const Top3Roster = ({top3data}) => {
     return (
         <div className="top3roster-container">
             {
-                data.map((pokemon, index) => {
+                top3data.map((pokemon, index) => {
                     <Slot key={index} pokemon={pokemon} />
                 })
             }
