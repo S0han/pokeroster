@@ -6,7 +6,6 @@ const Top3PokemonSlots = () => {
 
     //get the top 3 pokemon names from the database
     const [top3Pokemon, setTop3Pokemon] = useState([]);
-
     //store top3 pokemon names and sprites fetched from server into array to be added to slots
     const [top3DisplayData, setTop3DisplayData] = useState([]);
     
@@ -43,13 +42,20 @@ const Top3PokemonSlots = () => {
         }
     }
 
-    // const displayTop3PokemonHandler = () => {
-    //     // top3PokemonHandler();
-    // }
+    const displayTop3PokemonHandler = () => {
+        top3PokemonHandler();
+        //go through each name of top3Pokemon and fetch data to add to slots
+        //creating a for loop and call fetch 3 times to get all 3 pokemon
+        for (let i = 0; i < top3Pokemon.length; i++) {
+            getPokemonDataHandler(top3Pokemon[i].pokemon_name);
+        }
+    }
+
+    displayTop3PokemonHandler();
 
     return (
         <div>   
-            <Top3Roster />
+            <Top3Roster top3DisplayData={top3DisplayData} />
         </div>
     );
 }
