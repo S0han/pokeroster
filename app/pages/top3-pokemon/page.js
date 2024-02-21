@@ -8,14 +8,15 @@ import Top3PokemonSlots from '../../components/top3pokemon.component';
       const res = await fetch('/api/top-3');
       const data = await res.json();
       console.log(data);
+      return data;
   } catch(e) {
       console.error(e.message);
   }
 }
 
-export default function Page() {
+export default async function Page() {
 
-  const data = threeNamesFromDb()
+  const data = await threeNamesFromDb();
 
   return (
     <div>
