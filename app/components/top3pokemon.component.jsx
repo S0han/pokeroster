@@ -45,16 +45,12 @@ const Top3PokemonSlots = () => {
     const displayTop3PokemonHandler = async () => {
         try {
             await top3PokemonHandler();
-            const pokemonData = []
-            for (let i = 0; i < top3Pokemon.length; i++) {
-                const pokemon = await getPokemonDataHandler(top3Pokemon[i].pokemon_name);
-                pokemonData.push(pokemon);
-            }
+            const promises = top3Pokemon.map(pokemon => getPokemonDataHandler(pokemon.pokemon_name));
+            const pokemonData = await Promise.all(promises);
             setTop3DisplayData(pokemonData);
         } catch(e) {
             console.error(e.message);
         }
-        
     }
 
     useEffect(() => {
