@@ -57,7 +57,9 @@ const Top3PokemonSlots = () => {
         
     }
 
-    useEffect(displayTop3PokemonHandler(), []);
+    useEffect(() => {
+        displayTop3PokemonHandler();
+    }, []);
     
     return (
         <div>   
