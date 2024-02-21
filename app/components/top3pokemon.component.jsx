@@ -8,8 +8,6 @@ const Top3PokemonSlots = () => {
     const [top3Pokemon, setTop3Pokemon] = useState([]);
     //store top3 pokemon names and sprites fetched from server into array to be added to slots
     const [top3DisplayData, setTop3DisplayData] = useState([]);
-    //set a toggle to prevent a re-render until fetch is complete
-    const [fetchingData, setFetchingData] = useState(true); 
     
     //get the top 3 pokemon names from the database
     const top3PokemonHandler = async () => {
@@ -22,8 +20,6 @@ const Top3PokemonSlots = () => {
             console.log(data);
         } catch(e) {
             console.error(e.message);
-        } finally {
-            setFetchingData(false);
         }
     }
 
