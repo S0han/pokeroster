@@ -8,20 +8,6 @@ const Top3PokemonSlots = ({threeNamesFromDb}) => {
     const [top3Pokemon, setTop3Pokemon] = useState([]);
     //store top3 pokemon names and sprites fetched from server into array to be added to slots
     const [top3DisplayData, setTop3DisplayData] = useState([]);
-    
-    //get the top 3 pokemon names from the database
-    // const top3PokemonHandler = async () => {
-    //     console.log('Displaying Top 3 Pokemon Selections from Database!');
-    //     try {
-    //         //get the data from the top-3 folder in api/top-3
-    //         const res = await fetch('/api/top-3');
-    //         const data = await res.json();
-    //         setTop3Pokemon(data);
-    //         console.log(data);
-    //     } catch(e) {
-    //         console.error(e.message);
-    //     }
-    // }
 
     setTop3Pokemon(threeNamesFromDb);
     console.log(top3Pokemon)
