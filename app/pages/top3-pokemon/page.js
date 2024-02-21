@@ -17,7 +17,7 @@ import Top3PokemonSlots from '../../components/top3pokemon.component';
 export default async function Page() {
 
   const data = await threeNamesFromDb();
-  console.log(`This is the data being fed as a prop:${data}`)
+  console.log(`This is the data being fed as a prop: ${data}`);
 
   return (
     <div>

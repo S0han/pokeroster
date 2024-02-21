@@ -24,7 +24,7 @@ export async function addRoster(rosterData) {
 
 //Export the top 3 names generated through the query from DB to the top-3 API folder
 export async function getTop3() {
-    const top3Pokemon = await prisma.$queryRaw(`
+    const top3Pokemon = await prisma.$queryRaw`
         SELECT pokemon_name, COUNT(*) AS occurrences
         FROM (
             SELECT pokemon1 AS pokemon_name FROM rosters WHERE pokemon1 IS NOT NULL
@@ -42,6 +42,6 @@ export async function getTop3() {
         GROUP BY pokemon_name
         ORDER BY occurrences DESC
         LIMIT 3;
-    `);
+    `;
     return top3Pokemon;
 }
