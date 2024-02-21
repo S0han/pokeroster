@@ -6,8 +6,6 @@ export async function GET(req, res) {
         const top3 = await getTop3();
         return Response.json({ top3: top3 });
     } catch (e) {
-        return NextResponse.json(`Webhook error: ${e.message}`, {
-            status: 500,
-        });
+        console.error(e.message);
     }
 }
