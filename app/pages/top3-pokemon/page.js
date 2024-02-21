@@ -5,9 +5,9 @@ import Top3PokemonSlots from '../../components/top3pokemon.component';
   console.log('Displaying Top 3 Pokemon Selections from Database!');
   try {
       //get the data from the top-3 folder in api/top-3
-      const res = await fetch('/api/top-3');
+      const res = await fetch('http://localhost:3000/api/top-3');
       const data = await res.json();
-      console.log(data);
+      console.log(`This is the data from fetch request: ${data}`);
       return data;
   } catch(e) {
       console.error(e.message);
@@ -17,6 +17,7 @@ import Top3PokemonSlots from '../../components/top3pokemon.component';
 export default async function Page() {
 
   const data = await threeNamesFromDb();
+  console.log(`This is the data being fed as a prop:${data}`)
 
   return (
     <div>
