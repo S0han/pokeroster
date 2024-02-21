@@ -63,11 +63,15 @@ const Top3PokemonSlots = () => {
 
     useEffect(() => {
         displayTop3PokemonHandler();
-    }, [fetchingData]);
+    }, []);
     
     return (
         <div>   
-            <Top3Roster top3DisplayData={top3DisplayData} />
+            {
+                top3DisplayData !== null ? 
+                    (<Top3Roster top3DisplayData={top3DisplayData} />) : 
+                    (<div>Loading...</div>)
+            }
         </div>
     );
 }
