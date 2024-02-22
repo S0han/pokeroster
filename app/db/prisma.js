@@ -43,5 +43,13 @@ export async function getTop3() {
         ORDER BY occurrences DESC
         LIMIT 3;
     `;
-    return top3Pokemon;
+
+    // Format the data into an array of objects
+    const formattedData = top3Pokemon.map(({ pokemon_name, occurrences }) => ({
+        pokemon_name,
+        occurrences
+    }));
+
+    console.log(`From Prisma: ${formattedData}`);
+    return formattedData;
 }

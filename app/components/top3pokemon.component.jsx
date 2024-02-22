@@ -1,15 +1,15 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Top3Roster from './top3pokemon.component';
+import Top3Roster from './top3roster.component';
 
 const Top3PokemonSlots = ({ threeNamesFromDb }) => {
 
     //store top3 pokemon names and sprites fetched from server into array to be added to slots
     const [top3DisplayData, setTop3DisplayData] = useState([]);
 
-    const getPokemonDataHandler = async (top3PokemonName) => {
+    const getPokemonDataHandler = async (PokemonName) => {
         console.log('fetching top3 pokemon data');
-        const pokemonValue = `https://pokeapi.co/api/v2/pokemon/${top3PokemonName}/`;
+        const pokemonValue = `https://pokeapi.co/api/v2/pokemon/${PokemonName}/`;
         try {
             const response = await fetch(pokemonValue);
             if (!response.ok) {
@@ -28,14 +28,10 @@ const Top3PokemonSlots = ({ threeNamesFromDb }) => {
 
     const displayTop3PokemonHandler = async () => {
         try {
-            // Ensure that threeNamesFromDb is an array
-            const namesArray = Array.isArray(threeNamesFromDb) ? threeNamesFromDb : [threeNamesFromDb];
-            
-            if (namesArray.length > 0) {
-                const promises = namesArray.map(pokemonName => getPokemonDataHandler(pokemonName));
+            if (threeNamesFromDb.length > 0) {
+                const promises = threeNamesFromDb.map(pokemonName => getPokemonDataHandler(pokemonName));
                 const pokemonData = await Promise.all(promises);
                 setTop3DisplayData(pokemonData);
-                console.log(top3DisplayData);
             } else {
                 console.error('Invalid data format for threeNamesFromDb: ', threeNamesFromDb);
             }
@@ -45,16 +41,15 @@ const Top3PokemonSlots = ({ threeNamesFromDb }) => {
     }
     
     useEffect(() => {
+        console.log("Data is being passed into Top3Roster component.");
         displayTop3PokemonHandler();
     }, [threeNamesFromDb]);
     
+    
+
     return (
         <div>   
-            {
-                top3DisplayData !== null ? 
-                    (<Top3Roster top3DisplayData={top3DisplayData} />) : 
-                    (<div>Loading...</div>)
-            }
+            <Top3Roster top3DisplayData={top3DisplayData} />
         </div>
     );
 }

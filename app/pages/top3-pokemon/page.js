@@ -6,12 +6,13 @@ import Top3PokemonSlots from '../../components/top3pokemon.component';
   try {
       //get the data from the top-3 folder in api/top-3
       const res = await fetch('http://localhost:3000/api/top-3');
+      console.log(`This is the data before it gets parsed: ${res}`);
       const data = await res.json();
-      console.log(`Fetched Data: ${data}`);
+      console.log("fetched data", data);
 
       // Extracting only the names from the data
       const names = data.top3.map(item => item.pokemon_name);
-      console.log(`Extracted names:`, names);
+      console.log("data converted in to array of pokemon names", names);
       
       return names;
   } catch(e) {
@@ -21,13 +22,8 @@ import Top3PokemonSlots from '../../components/top3pokemon.component';
 
 export default async function Page() {
   try {
-      let data = await threeNamesFromDb();
-      console.log(`This is the data being fed as a prop: ${data}`);
-
-      // Ensure data is an array
-      if (!Array.isArray(data)) {
-        data = [data]; // Convert to array if not already an array
-      }
+      const data = await threeNamesFromDb();
+      console.log("This is the data being fed as a prop:", data);
     
       return (
         <div>

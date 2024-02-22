@@ -1,6 +1,12 @@
 import Slot from './slot.component';
+import { useEffect } from 'react';
 
-const Top3Roster = ({top3DisplayData}) => {
+const Top3Roster = ({ top3DisplayData }) => {
+
+    useEffect(() => {
+        console.log("Data ready to be mapped: ", top3DisplayData)
+    }, [top3DisplayData]);
+    
     return (
         <div className="top3roster-container">
             {
