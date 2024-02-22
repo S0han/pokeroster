@@ -1,3 +1,4 @@
+import './styles/tailwind.css';
 import Navbar from "./components/navbar.component";
 
 export const metadata = {
@@ -5,10 +6,10 @@ export const metadata = {
   description: 'Created by Kane Pereira',
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, pageProps }) {
  return (
     <html lang="en">
-      <body>
+      <body {...pageProps} >
         <Navbar />
         {children}
       </body>
