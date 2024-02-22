@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useState, useEffect } from 'react';
 import Top3Roster from './top3pokemon.component';
 
@@ -35,8 +35,9 @@ const Top3PokemonSlots = ({ threeNamesFromDb }) => {
                 const promises = namesArray.map(pokemonName => getPokemonDataHandler(pokemonName));
                 const pokemonData = await Promise.all(promises);
                 setTop3DisplayData(pokemonData);
+                console.log(top3DisplayData);
             } else {
-                console.error('Invalid data format for threeNamesFromDb:', threeNamesFromDb);
+                console.error('Invalid data format for threeNamesFromDb: ', threeNamesFromDb);
             }
         } catch(e) {
             console.error(e.message);
