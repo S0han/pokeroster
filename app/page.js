@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from './components/search.component';
 
+
 export default function App() {
   return (
     <main>
