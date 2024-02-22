@@ -2,15 +2,10 @@
 import { useState, useEffect } from 'react';
 import Top3Roster from './top3pokemon.component';
 
-const Top3PokemonSlots = ({threeNamesFromDb}) => {
+const Top3PokemonSlots = ({ threeNamesFromDb }) => {
 
-    //get the top 3 pokemon names from the database
-    const [top3Pokemon, setTop3Pokemon] = useState([]);
     //store top3 pokemon names and sprites fetched from server into array to be added to slots
     const [top3DisplayData, setTop3DisplayData] = useState([]);
-
-    setTop3Pokemon(threeNamesFromDb);
-    console.log(top3Pokemon)
 
     const getPokemonDataHandler = async (top3PokemonName) => {
         console.log('fetching top3 pokemon data');
@@ -33,18 +28,24 @@ const Top3PokemonSlots = ({threeNamesFromDb}) => {
 
     const displayTop3PokemonHandler = async () => {
         try {
-            await top3PokemonHandler();
-            const promises = top3Pokemon.map(pokemon => getPokemonDataHandler(pokemon.pokemon_name));
-            const pokemonData = await Promise.all(promises);
-            setTop3DisplayData(pokemonData);
+            // Ensure that threeNamesFromDb is an array
+            const namesArray = Array.isArray(threeNamesFromDb) ? threeNamesFromDb : [threeNamesFromDb];
+            
+            if (namesArray.length > 0) {
+                const promises = namesArray.map(pokemonName => getPokemonDataHandler(pokemonName));
+                const pokemonData = await Promise.all(promises);
+                setTop3DisplayData(pokemonData);
+            } else {
+                console.error('Invalid data format for threeNamesFromDb:', threeNamesFromDb);
+            }
         } catch(e) {
             console.error(e.message);
         }
     }
-
+    
     useEffect(() => {
         displayTop3PokemonHandler();
-    }, []);
+    }, [threeNamesFromDb]);
     
     return (
         <div>   
