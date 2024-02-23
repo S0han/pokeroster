@@ -5,3 +5,20 @@
 .Navbar {
     text-align: center;
 }
+
+.Navbar a {
+    margin-left: 50px;
+    margin-right: 50px;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-family: 'arial';
+}
+
+.Navbar a:hover {
+    color: red;
+}
+
+.Navbar a:link, a:visited {
+    text-decoration: none;
+}
