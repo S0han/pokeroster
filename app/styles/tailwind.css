@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Navbar Styling */
 .Navbar {
     text-align: center;
 }
@@ -21,4 +22,9 @@
 
 .Navbar a:link, a:visited {
     text-decoration: none;
+}
+
+/* Header Styling */
+h1 {
+    font-family: 'Pokemon Solid', sans-serif;                                      
 }

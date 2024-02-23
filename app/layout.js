@@ -11,6 +11,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet" />
+      </head>
       <body>
         <Navbar />
         {children}
