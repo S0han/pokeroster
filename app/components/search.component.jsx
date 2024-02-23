@@ -130,7 +130,9 @@ const Search = () => {
                 <button type="button" onClick={addToRosterHandler} >ADD TO ROSTER</button>
                 <input type="submit" value="SUBMIT" />
             </form>
+            <div className="space"></div>
             <Preview id="preview-pokemon" searchBarData={pokeData}/>
+            <div className="space"></div>
             <Roster rosterData={rosterData} />
         </div>
     );

@@ -8,6 +8,7 @@ export default function App() {
       <title>Pokeroster</title>
       <div>
         <h1>Pokeroster</h1>
+        <div className="space"></div>
         <Search />
       </div>
     </main>

@@ -28,6 +28,7 @@ export default async function Page() {
       return (
         <div>
             <h1>Top 3 Pokemon</h1>
+            <div className="space"></div>
             <Top3PokemonSlots threeNamesFromDb={data} />
         </div>
       );

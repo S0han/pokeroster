@@ -4,11 +4,11 @@
 
 /* Navbar Styling */
 .Navbar {
-    text-align: center;
+    text-align: left;
 }
 
 .Navbar a {
-    margin-left: 50px;
+    margin-left: 0px;
     margin-right: 50px;
     text-decoration: none;
     color: black;
@@ -27,4 +27,33 @@
 /* Header Styling */
 h1 {
     font-family: 'Pokemon Solid', sans-serif;                                      
+}
+
+/* Individual Slot Styling */
+.slot-container {
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 100px;
+    height: 150px;
+    padding: 5px;
+    margin-inline-start: 0px;
+    margin-inline-end: 50px;
+    background-color: #e8e8e8;
+    display: inline-block;
+}
+
+.slot-container p {
+    font-family: 'arial';
+}
+
+/* Preview Stlying */
+.preview-container p {
+    display: block;
+    font-family: 'arial';
+}
+
+/* Space Stlying */
+.space {
+    padding: 10px;
 }

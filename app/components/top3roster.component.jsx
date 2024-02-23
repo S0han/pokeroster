@@ -8,7 +8,7 @@ const Top3Roster = ({ top3DisplayData }) => {
     }, [top3DisplayData]);
     
     return (
-        <div className="top3roster-container">
+        <div className="roster-container">
             {
                 top3DisplayData.map((pokemon, index) => (
                     <Slot key={index} pokemon={pokemon} />

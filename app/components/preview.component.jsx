@@ -1,7 +1,7 @@
 const Preview = ({searchBarData}) => {
     return  (
         searchBarData ? 
-        <div className="slot-container">
+        <div className="preview-container">
             <img src={searchBarData.sprites} alt={searchBarData.name} />
             <p>{searchBarData.name}</p>
        </div> : null

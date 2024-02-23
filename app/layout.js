@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <Navbar />
+        <div className="space"></div>
         {children}
       </body>
     </html>
