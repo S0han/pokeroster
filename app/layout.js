@@ -1,5 +1,7 @@
 
+import './styles/tailwind.css';
 import Navbar from "./components/navbar.component";
+
 
 export const metadata = {
   title: 'Pokeroster',
